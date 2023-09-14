@@ -21,7 +21,7 @@ split-window -h
 selectp -t 2
 split-window -h
 selectp -t 0
-neww -n task
+neww -n middle
 split-window -v
 selectp -t 0
 split-window -h
