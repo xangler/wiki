@@ -1,7 +1,7 @@
 # Vim 配置
 
 ## 配置文件
-配置文件(~/.vimrc)
+配置文件(${HOME}/.vimrc)
 ```bash
 syntax on   " 自动语法高亮
 set number " 显示行号

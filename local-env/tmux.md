@@ -1,7 +1,10 @@
 # Tmux 配置
 
+## Powerline
+[安装文档](https://powerline.readthedocs.io/en/latest/installation.html)
+
 ## 配置文件
-配置文件(~/.tmux.conf)
+配置文件(${HOME}/.tmux.conf)
 ```bash
 set-option -g prefix C-x
 unbind-key C-b 
@@ -11,8 +14,7 @@ bind-key R source-file ~/.tmux.conf
 bind-key D source-file ~/.tmux.init
 bind-key F setw synchronize-panes
 ```
-
-初始化(~/.tmux.init)
+初始化文件(${HOME}/.tmux.init)
 ```bash
 rename-window local
 split-window -v
