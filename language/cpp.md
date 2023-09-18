@@ -1,5 +1,10 @@
 # Cpp 常用命令
 
+## gcc 参数
+```
+-fsanitize //内存+线程锁
+```
+
 ## symbol lookup error
 ```bash
 size xx                 #查看二进制数据大小
@@ -18,7 +23,6 @@ starce -p 4795          #查看系统调用
 lsof -d 1               #通过fd进行查询进程
 lsof -p 4795            #通过进程id查询fd
 ```
-
 
 ## GDB调试
 ```bash
