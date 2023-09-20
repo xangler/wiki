@@ -35,6 +35,7 @@ password demo
 
 ## govendor使用(废弃)
 ```bash
+go mod init
 go mod tidy
 go mod vendor
 govendor fetch k8s.io/code-generator/^@c2090be
