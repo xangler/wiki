@@ -9,3 +9,8 @@ pyenv global 3.9.0
 ```bash
 pip install flask
 ```
+
+## 运行日志
+```bash
+nohup python3 -u demo.py > demo.log 2>&1 &
+```

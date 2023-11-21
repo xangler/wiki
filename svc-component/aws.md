@@ -1,6 +1,6 @@
 # aws 操作指南
 
-```
+```bash
 set -e
 
 export AWS_ACCESS_KEY_ID='demoID' 
