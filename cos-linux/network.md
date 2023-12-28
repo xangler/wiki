@@ -11,6 +11,7 @@ telnet 127.0.0.1 9092
 
 ## 端口转发
 ```bash
+socat TCP-LISTEN:30080,fork,reuseaddr  TCP:192.168.0.2:30080
 ssh -f -N -L 127.0.0.1:30900:${target_ip}:30900 root@${jump_ip} -p 22
 ```
 
