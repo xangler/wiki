@@ -1,17 +1,11 @@
 # 网络相关操作
 
-## ARP
-```bash
-arp -an
-arping 10.0.0.2
-```
-
 ## 网络配置
 ```bash
 ifconfig
 ```
 
-## VPair
+## IPair
 ```bash
 # 创建netns
 ip netns add ns1
@@ -31,7 +25,7 @@ ip netns exec ns2 ping -c2 10.0.0.2
 # ethtool -S eth0 # peer_ifindex
 ```
 
-## VBridge
+## IBridge
 ```bash
 # 创建bridge
 ip link add br0 type bridge
@@ -95,6 +89,12 @@ ip route add 10.0.0.3/24 dev ns2-eth0 scope link
 # ip route add 10.0.1.2/24 via 172.16.0.1 dev ens192
 ```
 
+## ARP
+```bash
+arp -an
+arping 10.0.0.2
+```
+
 ## Iptables
 ```bash
 # iptables -t nat -nvL PREROUTING
@@ -155,16 +155,16 @@ nc -vzw1 127.0.0.1 9092
 telnet 127.0.0.1 9092
 ```
 
-## 网络性能压测
+## 网络服务测试
 ```bash
 # python3 -m http.server 80
 iperf3 -s -p 80
 iperf3 -c 10.100.100.100 -p 30080
 ```
 
-## 视频流抓包
+## 网络抓包
 ```bash
+# tcpdump -pne -i eth0
 tcpdump tcp -i en0 -t -s 0 -c 2000 port 9051 and host 127.0.0.1 -w ./target.cap
 tcpdump udp -i en0 -t -s 0 -c 2000 port 9051 and host 127.0.0.1 -w ./target.cap
-# tcpdump -pne -i eth0
 ```

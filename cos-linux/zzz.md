@@ -4,6 +4,3 @@
 ```bash
 cat /var/log/messages   #系统日志
 ```
-
-## 系统详情
-<div align=center><img src="linux.drawio.svg"/></div>  
