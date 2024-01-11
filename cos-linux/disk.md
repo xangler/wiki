@@ -1,11 +1,5 @@
-# 内存磁盘基本操作
-## 内存操作
-```bash
-free -m #查看内存使用情况
-swapon -s #查看是否有swap分区
-swapoff -a #关闭swap分区
-swapon /dev/sda3 #打开swap分区
-```
+# 磁盘基本操作
+
 ## 硬盘操作
 ```bash
 fdisk -l #查看硬盘信息
@@ -19,12 +13,9 @@ parted /dev/sdf
 (parted) rm 1                           #记得清除自动挂载
 (parted) unit s
 (parted) p
-(parted) mkpart primary 1499500 1998900 #ext2/ext4/linux-swap
-
+(parted) mkpart primary ext4 1499500 1998900 #ext2/linux-swap
+# (parted) toggle 1 lvm  #设置为lvm
 (parted) quit
-
-#物理分区扩容
-resize2fs /dev/sda2
 
 #swap分区格式化
 mkswap /dev/sda3
@@ -32,14 +23,22 @@ mkswap /dev/sda3
 #新增分区格式化
 mkfs.xfs /dev/sdf2
 
-#自动挂载
-ls -l /dev/disk/by-uuid/ |grep sdf2 
-mkdir -p /mnt/locals/mysql/volume0
-#vi /etc/fstab
-#UUID=a5c4f829-227a-4c10-82af-d9b1b7999a65 /mnt/locals/mysql/volume0   xfs    defaults,noatime    0   0
+#物理分区扩容
+resize2fs /dev/sda2
+
+#自动挂载与卸载
+mkdir -p /mnt/xdisk
+#ls -l /dev/disk/by-uuid/ |grep md0 
+#新增/etc/fstab配置
+#UUID=a5c4f829-227a-4c10-82af-d9b1b7999a65 /mnt/xdisk   xfs    defaults,noatime    0   0
 #手动挂载
 mount -a
+
+#手动卸载
+umount /dev/md0 /mnt/xdisk
+#删除/etc/fstab配置
 ```
+
 ## 文件系统操作
 ```bash
 df -lh #查看硬盘使用情况

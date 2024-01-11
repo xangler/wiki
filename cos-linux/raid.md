@@ -12,29 +12,20 @@ mdadm -C -v /dev/md1 -l 1 -n 2 -x 1 /dev/sd[d,e,f]  && mdadm -Dsv > /etc/mdadm
 mdadm -C -v /dev/md5 -l 5 -n 3 -x 1 -c 32 /dev/sd{g,h,i,j} && mdadm -Dsv > /etc/mdadm.conf
 ```
 
-## 格式化磁盘与挂载
+## 格式化磁盘
 ```bash
-# 格式化磁盘
-mkfs.xfs /dev/md0
-# 挂载磁盘
-mkdir raid_0 && mount /dev/md0 /dev/raid_0/
+mkfs.xfs /dev/md0 # 格式化磁盘
 ```
 
-## 开机自动挂载
+## 磁盘挂载与卸载
 ```bash
-# 在/etc/fstab文件中添加
-/dev/md0        /dev/raid_0     xfs     defaults        0 0
-```
+mkdir -p /mnt/xdisk
+#新增/etc/fstab配置
+#/dev/md0 /mnt/xdisk   xfs    defaults,noatime    0   0
+mount -a #手动挂载
 
-# 软raid删除
-## 清除开机挂载
-```bash
-# /etc/fstab 中删除对应记录
-```
-
-## 取消挂载
-```bash
-# umount /dev/md0 /dev/raid_0
+umount /mnt/xdisk #手动卸载
+#删除/etc/fstab配置
 ```
 
 ## 停止raid设备
