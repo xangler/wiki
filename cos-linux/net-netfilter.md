@@ -1,46 +1,13 @@
-# 网络相关操作
+# netfilter相关操作
 
-## Socket
-<div align=center><img src="network_socket.drawio.svg"/></div> 
-
-## 网络协议
-#### 链路层
+## 网络查看
 ```bash
-#MAC
-#PPP
-#ARP
-arp -an
-arping 10.0.0.2
+ifconfig eth0 #特定网卡的丢包情况
+ethtool -l eth0 #多队列配置
+ethtool -g eth0 #队列大小配置
+bridge fdb show
+ip neigh show
 ```
-#### 网络层
-```bash
-#IP
-#RIP
-#ICMP
-ping www.baidu.com
-```
-#### 传输层
-```bash
-#UDP
-#TCP
-#SCTP
-```
-#### 应用层
-```bash
-#BGP
-#DHCP
-#DNS
-nslookup www.baidu.com
-dig www.baidu.com ns +trace
-```
-
-## 网络配置
-```bash
-ifconfig
-```
-
-## netfilter
-![netfilter](network_netfilter.png "netfilter")
 
 ## ipair
 ```bash
@@ -96,6 +63,12 @@ iptables -t filter -A FORWARD --in-interface br0 --jump ACCEPT
 ip netns exec ns2 ping -c2 10.0.0.2
 ```
 
+## flannel
+```bash
+# host-gw--mac 三层联通
+# vxlan---udp 二层联通
+```
+
 ## calico
 ```bash
 # IPIP
@@ -126,7 +99,7 @@ ip route add 10.0.0.3/24 dev ns2-eth0 scope link
 # ip route add 10.0.1.2/24 via 172.16.0.1 dev ens192
 ```
 
-## route
+## 检测route
 ```bash
 route
 traceroute www.baidu.com
@@ -182,42 +155,7 @@ ipvsadm -A -t 10.100.100.100:30080 -s rr
 ipvsadm -a -t 10.100.100.100:30080 -r 10.0.0.2:80 -m -w 1
 ```
 
-## conntrack
-```bash
-conntrack -L
-```
-
 ## traffic control
 ```bash
 ```
 
-## 端口探测
-```bash
-# 主机网络
-netstat -anlp|grep 80
-ss -lnp|grep 80
-# 远程网络
-telnet 127.0.0.1 9092
-```
-
-## 网络服务
-```bash
-# python3 -m http.server 80
-# nc -l -p 80
-# nc -vzw1 127.0.0.1 80
-iperf3 -s -p 80
-iperf3 -c 10.100.100.100 -p 30080
-```
-
-## 端口转发
-```bash
-socat TCP-LISTEN:30080,fork,reuseaddr  TCP:192.168.0.2:30080
-ssh -f -N -L 127.0.0.1:30900:${target_ip}:30900 root@${jump_ip} -p 22
-```
-
-## 网络抓包
-```bash
-# tcpdump -pne -i eth0
-tcpdump tcp -i en0 -t -s 0 -c 2000 port 9051 and host 127.0.0.1 -w ./target.cap
-tcpdump udp -i en0 -t -s 0 -c 2000 port 9051 and host 127.0.0.1 -w ./target.cap
-```

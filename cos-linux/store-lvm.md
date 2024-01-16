@@ -1,7 +1,7 @@
 # lvm 使用手册
 
 ## lvm 概念
-<div align=center><img src="lvm.drawio.svg"/></div> 
+<div align=center><img src="store-lvm.drawio.svg"/></div> 
 
 ## 创建lv分区
 ```bash
