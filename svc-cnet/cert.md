@@ -1,4 +1,4 @@
-# 数字证书(openssl)的使用                                                                                                                                                                    
+# 数字证书(openssl)的使用
 ## 文件格式备注
 > * pem(下文默认格式)文件前后带有BEGIN/END
 > * der二进制格式, 命令行需带上 -infom der 

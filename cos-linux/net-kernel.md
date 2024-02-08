@@ -1,38 +1,5 @@
 # net-kernel 知识
 
-## 网络协议
-#### 链路层
-```bash
-#MAC
-#PPP
-#ARP
-arp -an
-arping 10.0.0.2
-```
-#### 网络层
-```bash
-#IP
-#RIP
-#ICMP
-ping www.baidu.com
-```
-#### 传输层
-```bash
-#UDP
-#TCP
-#SCTP
-```
-#### 应用层
-```bash
-#BGP
-#DHCP
-#QUIC
-#DNS--->Anycast
-nslookup www.baidu.com
-dig www.baidu.com ns +trace
-mtr -z www.iq.com
-```
-
 ## Linux网络相关机制
 ### dpdk
 完全 Kernel bypass

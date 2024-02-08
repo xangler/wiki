@@ -10,19 +10,18 @@ nsenter -n -t ${PID}
 # /sys/fs/cgroup/cpu
 ```
 
-## 压测
+## 进程状态
 ```bash
-stress --cpu 1 --timeout 60
-stress --vm-bytes 100m --vm-keep -m 1
-```
-
-## ipc 操作 
-```bash
-ipcmk -Q
-ipcs
+pidstate #-r 
 ```
 
 ## strace 操作
 ```bash
 strace ./main.out
+```
+
+## 压测
+```bash
+stress --cpu 1 --timeout 60
+stress --vm-bytes 100m --vm-keep -m 1
 ```

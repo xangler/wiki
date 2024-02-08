@@ -2,11 +2,9 @@
 
 ## 网络查看
 ```bash
-ifconfig eth0 #特定网卡的丢包情况
+ifconfig #网络配置
 ethtool -l eth0 #多队列配置
 ethtool -g eth0 #队列大小配置
-bridge fdb show
-ip neigh show
 ```
 
 ## ipair
@@ -97,12 +95,6 @@ ip route add 10.0.0.2/24 dev ns1-eth0 scope link
 ip route add 10.0.0.3/24 dev ns2-eth0 scope link
 ## 跨机
 # ip route add 10.0.1.2/24 via 172.16.0.1 dev ens192
-```
-
-## 检测route
-```bash
-route
-traceroute www.baidu.com
 ```
 
 ## nftables

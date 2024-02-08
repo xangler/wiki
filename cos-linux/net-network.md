@@ -1,19 +1,35 @@
 # 网络相关操作
 
-## 端口探测
+## 网络问题
 ```bash
-# 主机网络
-netstat -anlp|grep 80
-ss -lnp|grep 80
-# 远程网络
-telnet 127.0.0.1 9092
+# 硬件层排查
+sar -n DEV 1 1 #网卡性能
+netstat -i
+# 链路层排查
+arp -an
+arping 10.0.0.2
+# 网络层排查
+route
+ping www.baidu.com
+traceroute www.baidu.com
+# 传输层排查
+netstat -s #协议总览
+ss -anp|grep 80 #主机端口
+netstat -anp|grep 80 #主机端口
+telnet 127.0.0.1 9092 #远程端口
+# 应用层排查
+nslookup www.baidu.com
+dig www.baidu.com ns +trace
+mtr -z www.iq.com
+# 业务层排查
+iftop -P
 ```
 
 ## 网络服务
 ```bash
-python3 -m http.server 80
 nc -l -p 80
 nc -vzw1 127.0.0.1 80
+python3 -m http.server 80
 iperf3 -s -p 80
 iperf3 -c 10.100.100.100 -p 30080
 ```

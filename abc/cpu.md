@@ -11,3 +11,11 @@ Skylake ~ xxx:
 - Silver
 - Gold
 - Platinum
+
+## 性能优化
+```bash
+# pipeline--->循环展开
+# 分支预测
+```
+
+## 虚拟化

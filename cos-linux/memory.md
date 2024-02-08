@@ -7,3 +7,9 @@ swapon -s #查看是否有swap分区
 swapoff -a #关闭swap分区
 swapon /dev/sda3 #打开swap分区
 ```
+
+## ipc 操作 
+```bash
+ipcmk -Q
+ipcs
+```
